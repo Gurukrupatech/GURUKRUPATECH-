@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#02050b">
+<title>SWITY AI • GurukrupaTech</title>
+
+<style>
+/* =========================================================
+   SWITY AI — MASTER SINGLE FILE
+   HTML + CSS + JAVASCRIPT
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#02050b;
+    --panel:#06121b;
+    --panel2:#081923;
+    --cyan:#00eaff;
+    --blue:#3298ff;
+    --purple:#b75cff;
+    --green:#00ff9d;
+    --text:#e8fbff;
+    --muted:#7fa5ad;
+    --border:rgba(0,234,255,.38);
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+/* TECH BACKGROUND */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+      radial-gradient(circle at 50% 25%,rgba(0,234,255,.09),transparent 28%),
+      radial-gradient(circle at 50% 75%,rgba(183,92,255,.06),transparent 30%),
+      linear-gradient(rgba(0,234,255,.025) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(0,234,255,.025) 1px,transparent 1px);
+    background-size:auto,auto,35px 35px,35px 35px;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    background:radial-gradient(
+        ellipse at center,
+        transparent 35%,
+        rgba(0,0,0,.58) 100%
+    );
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+    width:100%;
+    max-width:1500px;
+    margin:auto;
+    padding:18px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.topbar{
+    min-height:105px;
+    display:grid;
+    grid-template-columns:70px 1fr 70px;
+    align-items:center;
+    gap:15px;
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:15px 22px;
+    background:rgba(2,9,16,.88);
+    box-shadow:
+        0 0 30px rgba(0,234,255,.08),
+        inset 0 0 30px rgba(0,234,255,.025);
+}
+
+.icon-btn{
+    width:58px;
+    height:58px;
+    border:1px solid var(--border);
+    border-radius:16px;
+    background:rgba(0,234,255,.035);
+    color:var(--cyan);
+    font-size:29px;
+    transition:.2s;
+}
+
+.icon-btn:hover{
+    box-shadow:0 0 20px rgba(0,234,255,.3);
+    transform:translateY(-1px);
+}
+
+.brand{
+    text-align:center;
+}
+
+.brand-company{
+    color:var(--green);
+    font-size:14px;
+    font-weight:bold;
+    letter-spacing:5px;
+}
+
+.brand h1{
+    margin:2px 0;
+    font-size:52px;
+    line-height:1;
+    letter-spacing:8px;
+    color:#dfffff;
+    text-shadow:
+        0 0 8px var(--cyan),
+        0 0 22px rgba(0,234,255,.55);
+}
+
+.brand-subtitle{
+    color:var(--purple);
+    font-size:15px;
+    letter-spacing:3px;
+}
+
+.creator{
+    margin-top:7px;
+    display:inline-block;
+    padding:5px 14px;
+    border:1px solid rgba(183,92,255,.4);
+    border-radius:20px;
+    color:#d7c3ff;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:18px;
+}
+
+.status-card{
+    min-height:90px;
+    padding:15px 20px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:rgba(4,14,22,.86);
+    position:relative;
+    overflow:hidden;
+}
+
+.status-card::after{
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    right:15px;
+    top:5px;
+    border:2px solid rgba(0,234,255,.18);
+    border-radius:50%;
+}
+
+.status-title{
+    display:block;
+    color:#75aeb8;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+.status-value{
+    margin-top:8px;
+    color:#f2ffff;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.status-dot{
+    display:inline-block;
+    width:9px;
+    height:9px;
+    margin-right:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 12px var(--green);
+}
+
+/* =========================================================
+   MAIN DASHBOARD
+========================================================= */
+
+.dashboard{
+    display:grid;
+    grid-template-columns:245px minmax(0,1fr) 245px;
+    gap:18px;
+    margin-top:18px;
+}
+
+.side-panel{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.glass-panel{
+    padding:18px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:rgba(3,13,20,.82);
+}
+
+.glass-panel h3{
+    color:var(--cyan);
+    font-size:14px;
+    letter-spacing:1px;
+    margin-bottom:14px;
+}
+
+.system-log{
+    color:#60969f;
+    font-size:10px;
+    line-height:1.9;
+}
+
+.monitor{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+}
+
+.monitor-box{
+    padding:12px 4px;
+    text-align:center;
+    border:1px solid rgba(0,234,255,.2);
+    border-radius:12px;
+}
+
+.monitor-box strong{
+    display:block;
+    color:var(--cyan);
+    font-size:16px;
+}
+
+.monitor-box span{
+    color:#638e98;
+    font-size:9px;
+}
+
+/* =========================================================
+   SWITY CORE
+========================================================= */
+
+.center-panel{
+    min-width:0;
+}
+
+.ai-core{
+    text-align:center;
+    padding:15px 0 5px;
+}
+
+.core-rings{
+    width:330px;
+    height:330px;
+    max-width:75vw;
+    margin:auto;
+    border:2px solid rgba(0,234,255,.42);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    position:relative;
+    box-shadow:
+        0 0 25px rgba(0,234,255,.12),
+        inset 0 0 25px rgba(0,234,255,.06);
+}
+
+.core-rings::before,
+.core-rings::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(183,92,255,.45);
+}
+
+.core-rings::before{
+    inset:22px;
+}
+
+.core-rings::after{
+    inset:48px;
+    border-color:rgba(0,234,255,.28);
+}
+
+.robot{
+    width:145px;
+    height:112px;
+    border-radius:42px;
+    background:linear-gradient(145deg,#eaffff,#7bcbd6);
+    position:relative;
+    box-shadow:
+        0 0 35px rgba(0,234,255,.5),
+        inset 0 -10px 20px rgba(0,80,100,.35);
+}
+
+.robot::before,
+.robot::after{
+    content:"";
+    position:absolute;
+    top:35px;
+    width:18px;
+    height:45px;
+    border-radius:15px;
+    background:#79d8e2;
+}
+
+.robot::before{left:-12px}
+.robot::after{right:-12px}
+
+.robot-antenna{
+    position:absolute;
+    width:8px;
+    height:25px;
+    background:#dff;
+    top:-25px;
+    left:calc(50% - 4px);
+    border-radius:8px;
+}
+
+.robot-antenna::after{
+    content:"";
+    position:absolute;
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    background:#eaffff;
+    left:-2.5px;
+    top:-9px;
+    box-shadow:0 0 18px var(--cyan);
+}
+
+.robot-face{
+    position:absolute;
+    inset:20px;
+    border-radius:28px;
+    background:#06131d;
+}
+
+.eye{
+    position:absolute;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:var(--cyan);
+    top:30px;
+    box-shadow:0 0 15px var(--cyan);
+}
+
+.eye.left{left:25px}
+.eye.right{right:25px}
+
+.mouth{
+    position:absolute;
+    width:38px;
+    height:17px;
+    border-bottom:3px solid var(--cyan);
+    border-radius:0 0 50% 50%;
+    left:calc(50% - 19px);
+    bottom:20px;
+}
+
+.core-name{
+    margin-top:16px;
+    font-size:30px;
+    font-weight:bold;
+    letter-spacing:8px;
+    color:#efffff;
+    text-shadow:0 0 15px var(--cyan);
+}
+
+.core-type{
+    margin-top:5px;
+    color:var(--purple);
+    letter-spacing:4px;
+    font-size:12px;
+}
+
+.system-online{
+    display:inline-block;
+    margin-top:10px;
+    padding:7px 18px;
+    border:1px solid rgba(0,234,255,.35);
+    border-radius:30px;
+    color:#9fd4dc;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+/* =========================================================
+   CHAT
+========================================================= */
+
+.chat-box{
+    margin-top:12px;
+    border:1px solid var(--border);
+    border-radius:24px;
+    background:rgba(3,13,20,.93);
+    overflow:hidden;
+    box-shadow:0 0 30px rgba(0,234,255,.06);
+}
+
+.chat-header{
+    min-height:58px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:0 20px;
+    color:var(--cyan);
+    font-weight:bold;
+}
+
+.chat-header span{
+    color:var(--green);
+    text-shadow:0 0 10px var(--green);
+}
+
+.chat-header small{
+    color:#78abb4;
+}
+
+.messages{
+    height:260px;
+    overflow-y:auto;
+    padding:10px 18px;
+    scroll-behavior:smooth;
+}
+
+.message{
+    max-width:85%;
+    margin:10px 0;
+    padding:13px 15px;
+    border:1px solid rgba(0,234,255,.25);
+    border-radius:15px;
+    line-height:1.55;
+    font-size:14px;
+}
+
+.ai-message{
+    background:rgba(0,100,130,.12);
+    margin-right:auto;
+}
+
+.user-message{
+    background:rgba(120,40,180,.12);
+    border-color:rgba(183,92,255,.3);
+    margin-left:auto;
+}
+
+.input-area{
+    display:grid;
+    grid-template-columns:1fr 70px;
+    gap:10px;
+    padding:12px 18px;
+}
+
+#userInput{
+    width:100%;
+    min-height:58px;
+    max-height:130px;
+    resize:none;
+    border:1px solid var(--border);
+    border-radius:17px;
+    outline:none;
+    padding:17px;
+    color:white;
+    background:#030c13;
+}
+
+#userInput:focus{
+    box-shadow:0 0 18px rgba(0,234,255,.12);
+}
+
+.send-btn{
+    border:1px solid var(--cyan);
+    border-radius:17px;
+    background:linear-gradient(135deg,#00dfff,#147cff);
+    color:#001018;
+    font-size:30px;
+    box-shadow:0 0 20px rgba(0,234,255,.25);
+}
+
+.action-buttons{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    padding:0 18px 18px;
+}
+
+.action-btn{
+    min-height:58px;
+    border:1px solid rgba(0,234,255,.35);
+    border-radius:16px;
+    background:rgba(0,234,255,.025);
+    color:#bfeff5;
+    transition:.2s;
+}
+
+.action-btn:hover{
+    border-color:var(--cyan);
+    box-shadow:0 0 18px rgba(0,234,255,.15);
+}
+
+.voice-active{
+    color:var(--green);
+    border-color:var(--green);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    text-align:center;
+    padding:18px;
+    color:#407b86;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+/* =========================================================
+   SETTINGS MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(10px);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:520px;
+    max-height:90vh;
+    overflow-y:auto;
+    padding:25px;
+    border:1px solid var(--cyan);
+    border-radius:25px;
+    background:#031018;
+    box-shadow:
+        0 0 45px rgba(0,234,255,.2),
+        inset 0 0 30px rgba(0,234,255,.035);
+}
+
+.modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.modal-header h2{
+    color:var(--cyan);
+    letter-spacing:2px;
+}
+
+.close-btn{
+    width:48px;
+    height:48px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:none;
+    color:var(--cyan);
+    font-size:27px;
+}
+
+.setting{
+    margin-bottom:22px;
+}
+
+.setting label{
+    display:block;
+    color:#8dbdc5;
+    margin-bottom:9px;
+}
+
+.setting select,
+.setting input[type="text"]{
+    width:100%;
+    height:52px;
+    padding:0 14px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    outline:none;
+    background:#06151d;
+    color:white;
+}
+
+.setting input[type="range"]{
+    width:100%;
+    accent-color:var(--cyan);
+}
+
+.range-value{
+    color:var(--cyan);
+    float:right;
+}
+
+.security-note{
+    padding:15px;
+    border-radius:15px;
+    background:rgba(0,234,255,.045);
+    color:#78aeb7;
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* =========================================================
+   MOBILE — COMPACT
+========================================================= */
+
+@media(max-width:700px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    .app{
+        padding:7px;
+        width:100%;
+    }
+
+    .topbar{
+        min-height:76px;
+        grid-template-columns:43px 1fr 43px;
+        gap:6px;
+        padding:8px;
+        border-radius:16px;
+    }
+
+    .icon-btn{
+        width:40px;
+        height:40px;
+        border-radius:11px;
+        font-size:21px;
+    }
+
+    .brand-company{
+        font-size:8px;
+        letter-spacing:2px;
+    }
+
+    .brand h1{
+        font-size:29px;
+        letter-spacing:5px;
+    }
+
+    .brand-subtitle{
+        font-size:8px;
+        letter-spacing:1.5px;
+    }
+
+    .creator{
+        margin-top:3px;
+        padding:3px 8px;
+        font-size:7px;
+        letter-spacing:1px;
+    }
+
+    .status-row{
+        gap:5px;
+        margin-top:7px;
+    }
+
+    .status-card{
+        min-height:59px;
+        padding:8px;
+        border-radius:12px;
+    }
+
+    .status-title{
+        font-size:7px;
+    }
+
+    .status-value{
+        margin-top:4px;
+        font-size:12px;
+    }
+
+    .status-dot{
+        width:6px;
+        height:6px;
+        margin-right:3px;
+    }
+
+    .status-card::after{
+        display:none;
+    }
+
+    .dashboard{
+        display:block;
+        margin-top:7px;
+    }
+
+    .side-panel{
+        display:none;
+    }
+
+    .ai-core{
+        padding:5px 0 0;
+    }
+
+    .core-rings{
+        width:220px;
+        height:220px;
+        max-width:none;
+    }
+
+    .core-rings::before{
+        inset:16px;
+    }
+
+    .core-rings::after{
+        inset:34px;
+    }
+
+    .robot{
+        width:95px;
+        height:75px;
+        border-radius:27px;
+    }
+
+    .robot-face{
+        inset:13px;
+        border-radius:18px;
+    }
+
+    .robot::before,
+    .robot::after{
+        top:25px;
+        width:12px;
+        height:30px;
+    }
+
+    .robot::before{left:-8px}
+    .robot::after{right:-8px}
+
+    .robot-antenna{
+        width:5px;
+        height:18px;
+        top:-18px;
+        left:calc(50% - 2.5px);
+    }
+
+    .robot-antenna::after{
+        width:9px;
+        height:9px;
+        left:-2px;
+        top:-6px;
+    }
+
+    .eye{
+        width:11px;
+        height:11px;
+        top:19px;
+    }
+
+    .eye.left{left:16px}
+    .eye.right{right:16px}
+
+    .mouth{
+        width:25px;
+        left:calc(50% - 12.5px);
+        bottom:13px;
+    }
+
+    .core-name{
+        margin-top:8px;
+        font-size:21px;
+        letter-spacing:6px;
+    }
+
+    .core-type{
+        font-size:8px;
+        letter-spacing:3px;
+    }
+
+    .system-online{
+        margin-top:6px;
+        padding:5px 12px;
+        font-size:7px;
+    }
+
+    .chat-box{
+        margin-top:7px;
+        border-radius:17px;
+    }
+
+    .chat-header{
+        min-height:39px;
+        padding:0 12px;
+        font-size:11px;
+    }
+
+    .chat-header small{
+        font-size:8px;
+    }
+
+    .messages{
+        height:190px;
+        padding:6px 10px;
+    }
+
+    .message{
+        max-width:92%;
+        margin:6px 0;
+        padding:9px 10px;
+        border-radius:11px;
+        font-size:11px;
+        line-height:1.45;
+    }
+
+    .input-area{
+        grid-template-columns:1fr 56px;
+        gap:6px;
+        padding:8px 10px;
+    }
+
+    #userInput{
+        min-height:48px;
+        padding:13px;
+        font-size:12px;
+        border-radius:13px;
+    }
+
+    .send-btn{
+        font-size:24px;
+        border-radius:13px;
+    }
+
+    .action-buttons{
+        gap:6px;
+        padding:0 10px 10px;
+    }
+
+    .action-btn{
+        min-height:45px;
+        border-radius:12px;
+        font-size:10px;
+    }
+
+    .footer{
+        padding:10px 3px;
+        font-size:7px;
+    }
+
+    .modal{
+        padding:10px;
+    }
+
+    .modal-box{
+        padding:18px;
+        border-radius:20px;
+        max-height:88vh;
+    }
+
+    .modal-header h2{
+        font-size:18px;
+    }
+}
+
+/* VERY SMALL PHONES */
+
+@media(max-width:380px){
+
+    .brand h1{
+        font-size:25px;
+    }
+
+    .core-rings{
+        width:195px;
+        height:195px;
+    }
+
+    .messages{
+        height:175px;
+    }
+
+    .action-btn{
+        font-size:9px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <header class="topbar">
+
+        <button class="icon-btn" id="menuBtn">☰</button>
+
+        <div class="brand">
+            <div class="brand-company">GURUKRUPATECH</div>
+            <h1>SWITY</h1>
+            <div class="brand-subtitle">GURU AI ASSISTANT</div>
+            <div class="creator">CREATE BY SHIV SONUNE</div>
+        </div>
+
+        <button class="icon-btn" id="settingsBtn">⚙</button>
+
+    </header>
+
+    <!-- STATUS -->
+    <section class="status-row">
+
+        <div class="status-card">
+            <span class="status-title">AI STATUS</span>
+            <div class="status-value">
+                <span class="status-dot"></span>ACTIVE
+            </div>
+        </div>
+
+        <div class="status-card">
+            <span class="status-title">CORE SYSTEM</span>
+            <div class="status-value">
+                <span class="status-dot"></span>ONLINE
+            </div>
+        </div>
+
+        <div class="status-card">
+            <span class="status-title">VOICE ENGINE</span>
+            <div class="status-value">
+                <span class="status-dot" id="voiceDot"></span>
+                <span id="voiceStatus">ON</span>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- DASHBOARD -->
+    <section class="dashboard">
+
+        <!-- LEFT -->
+        <aside class="side-panel">
+
+            <div class="glass-panel">
+                <h3>QUICK TOOLS</h3>
+
+                <div class="system-log">
+                    ▸ AI CHAT<br>
+                    ▸ TRADING TOOLS<br>
+                    ▸ CODING ASSISTANT<br>
+                    ▸ WEB TOOLS<br>
+                    ▸ CALCULATOR<br>
+                    ▸ SMART SOLUTIONS
+                </div>
+            </div>
+
+            <div class="glass-panel">
+                <h3>SYSTEM STATUS</h3>
+
+                <div class="system-log">
+                    ● AI ACTIVE<br>
+                    ● CORE ONLINE<br>
+                    ● VOICE READY<br>
+                    ● CONNECTION SECURE<br>
+                    ● DATA STREAM LIVE
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- CENTER -->
+        <main class="center-panel">
+
+            <!-- AI CORE -->
+            <section class="ai-core">
+
+                <div class="core-rings">
+
+                    <div class="robot">
+
+                        <div class="robot-face">
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
+                            <div class="mouth"></div>
+                        </div>
+
+                        <div class="robot-antenna"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="core-name">SWITY</div>
+                <div class="core-type">AI CORE</div>
+
+                <div class="system-online">
+                    <span class="status-dot"></span>
+                    SYSTEM ONLINE
+                </div>
+
+            </section>
+
+            <!-- CHAT -->
+            <section class="chat-box">
+
+                <div class="chat-header">
+                    <span>●</span>
+                    SWITY AI
+                    <small>• READY TO ASSIST</small>
+                </div>
+
+                <div class="messages" id="messages">
+
+                    <div class="message ai-message">
+                        नमस्कार Boss! मी Swity आहे.
+                        आज मी तुमची कशी मदत करू शकते?
+                    </div>
+
+                    <div class="message ai-message">
+                        Hello! Main Swity hoon.
+                        Aaj main aapki kya sahayata kar sakti hoon?
+                    </div>
+
+                    <div class="message ai-message">
+                        Hello Boss! I'm Swity AI by GurukrupaTech.
+                        Your intelligent AI companion for Trading,
+                        Coding, Technology, Learning, Creativity,
+                        and Smart Solutions. How may I assist you today?
+                    </div>
+
+                </div>
+
+                <div class="input-area">
+
+                    <textarea
+                        id="userInput"
+                        placeholder="Ask Swity anything..."
+                        rows="1"
+                    ></textarea>
+
+                    <button class="send-btn" id="sendBtn">
+                        ➤
+                    </button>
+
+                </div>
+
+                <!-- ONLY THREE BUTTONS -->
+                <div class="action-buttons">
+
+                    <button class="action-btn" id="micBtn">
+                        🎙 MIC
+                    </button>
+
+                    <button class="action-btn" id="chatSettingsBtn">
+                        ⚙ SETTINGS
+                    </button>
+
+                    <button class="action-btn" id="voiceBtn">
+                        🔊 VOICE ON
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- RIGHT -->
+        <aside class="side-panel">
+
+            <div class="glass-panel">
+
+                <h3>SYSTEM MONITOR</h3>
+
+                <div class="monitor">
+
+                    <div class="monitor-box">
+                        <strong>23%</strong>
+                        <span>CPU</span>
+                    </div>
+
+                    <div class="monitor-box">
+                        <strong>42%</strong>
+                        <span>MEMORY</span>
+                    </div>
+
+                    <div class="monitor-box">
+                        <strong>68%</strong>
+                        <span>NETWORK</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="glass-panel">
+                <h3>DATA STREAM</h3>
+                <div class="system-log">
+                    incoming_packets<br>
+                    channel_secure_01<br>
+                    data_flow_continuous<br>
+                    integrity_verified
+                </div>
+            </div>
+
+            <div class="glass-panel">
+                <h3>ENCRYPTION</h3>
+                <div class="system-log">
+                    🔒 SECURE CONNECTION<br>
+                    256-bit SSL<br>
+                    PROTECTED CHANNEL
+                </div>
+            </div>
+
+        </aside>
+
+    </section>
+
+    <footer class="footer">
+        🔒 GURU AI CORE SYSTEM • SAFE • SECURE • RELIABLE
+        <br>
+        GURUKRUPATECH • CREATE BY SHIV SONUNE
+    </footer>
+
+</div>
+
+
+<!-- =========================================================
+     SETTINGS
+========================================================= -->
+
+<div class="modal" id="settingsModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>SWITY SETTINGS</h2>
+
+            <button class="close-btn" id="closeSettings">
+                ×
+            </button>
+
+        </div>
+
+        <!-- LANGUAGE -->
+        <div class="setting">
+
+            <label>Language</label>
+
+            <select id="languageSelect">
+
+                <option value="mr-IN">
+                    मराठी — Marathi
+                </option>
+
+                <option value="hi-IN">
+                    हिन्दी — Hindi
+                </option>
+
+                <option value="en-US">
+                    English
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- VOICE -->
+        <div class="setting">
+
+            <label>Voice</label>
+
+            <select id="voiceSelect">
+                <option>Loading voices...</option>
+            </select>
+
+        </div>
+
+        <!-- SPEED -->
+        <div class="setting">
+
+            <label>
+                Voice Speed
+                <span class="range-value" id="rateValue">
+                    0.95
+                </span>
+            </label>
+
+            <input
+                type="range"
+                id="voiceRate"
+                min="0.6"
+                max="1.5"
+                step="0.05"
+                value="0.95"
+            >
+
+        </div>
+
+        <!-- PITCH -->
+        <div class="setting">
+
+            <label>
+                Voice Pitch
+                <span class="range-value" id="pitchValue">
+                    1.10
+                </span>
+            </label>
+
+            <input
+                type="range"
+                id="voicePitch"
+                min="0.6"
+                max="1.6"
+                step="0.05"
+                value="1.1"
+            >
+
+        </div>
+
+        <!-- API -->
+        <div class="setting">
+
+            <label>AI Backend Endpoint</label>
+
+            <input
+                type="text"
+                id="apiEndpoint"
+                placeholder="https://your-server.com/chat"
+                autocomplete="off"
+            >
+
+        </div>
+
+        <div class="security-note">
+            🔐 Private API keys HTML मध्ये ठेवू नका.
+            Backend endpoint वापरल्यास key server-side ठेवा.
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+/* =========================================================
+   SWITY AI — JAVASCRIPT
+========================================================= */
+
+const messages = document.getElementById("messages");
+const input = document.getElementById("userInput");
+const sendBtn = document.getElementById("sendBtn");
+
+const settingsModal = document.getElementById("settingsModal");
+const settingsBtn = document.getElementById("settingsBtn");
+const chatSettingsBtn = document.getElementById("chatSettingsBtn");
+const closeSettings = document.getElementById("closeSettings");
+
+const voiceBtn = document.getElementById("voiceBtn");
+const micBtn = document.getElementById("micBtn");
+
+const languageSelect = document.getElementById("languageSelect");
+const voiceSelect = document.getElementById("voiceSelect");
+
+const voiceRate = document.getElementById("voiceRate");
+const voicePitch = document.getElementById("voicePitch");
+
+const rateValue = document.getElementById("rateValue");
+const pitchValue = document.getElementById("pitchValue");
+
+const apiEndpoint = document.getElementById("apiEndpoint");
+
+let voices = [];
+let voiceEnabled = true;
+let recognition = null;
+
+
+/* =========================================================
+   SETTINGS OPEN / CLOSE
+========================================================= */
+
+function openSettings(){
+    settingsModal.classList.add("show");
+}
+
+function closeSettingsBox(){
+    settingsModal.classList.remove("show");
+}
+
+settingsBtn.addEventListener("click",openSettings);
+chatSettingsBtn.addEventListener("click",openSettings);
+closeSettings.addEventListener("click",closeSettingsBox);
+
+settingsModal.addEventListener("click",(e)=>{
+    if(e.target === settingsModal){
+        closeSettingsBox();
+    }
+});
+
+
+/* =========================================================
+   VOICES
+========================================================= */
+
+function loadVoices(){
+
+    if(!("speechSynthesis" in window)){
+        voiceSelect.innerHTML =
+            "<option>Voice not supported</option>";
+        return;
+    }
+
+    voices = speechSynthesis.getVoices();
+
+    voiceSelect.innerHTML = "";
+
+    if(!voices.length){
+
+        voiceSelect.innerHTML =
+            "<option>Default device voice</option>";
+
+        return;
+    }
+
+    const lang = languageSelect.value;
+
+    let filtered = voices.filter(v =>
+        v.lang.toLowerCase().startsWith(
+            lang.substring(0,2).toLowerCase()
+        )
+    );
+
+    if(!filtered.length){
+        filtered = voices;
+    }
+
+    filtered.forEach((voice,index)=>{
+
+        const option = document.createElement("option");
+
+        option.value = voices.indexOf(voice);
+
+        option.textContent =
+            voice.name + " — " + voice.lang;
+
+        voiceSelect.appendChild(option);
+
+    });
+}
+
+if("speechSynthesis" in window){
+    speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+loadVoices();
+
+languageSelect.addEventListener("change",()=>{
+
+    loadVoices();
+
+    const lang = languageSelect.value;
+
+    let text = "";
+
+    if(lang === "mr-IN"){
+        text = "नमस्कार Boss! मी Swity आहे. आज मी तुमची कशी मदत करू शकते?";
+    }
+
+    if(lang === "hi-IN"){
+        text = "Hello Boss! Main Swity hoon. Aaj main aapki kya sahayata kar sakti hoon?";
+    }
+
+    if(lang === "en-US"){
+        text = "Hello Boss! I'm Swity AI by GurukrupaTech. How may I assist you today?";
+    }
+
+    speak(text);
+});
+
+
+/* =========================================================
+   SPEAK
+========================================================= */
+
+function speak(text){
+
+    if(!voiceEnabled){
+        return;
+    }
+
+    if(!("speechSynthesis" in window)){
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    const utterance =
+        new SpeechSynthesisUtterance(text);
+
+    utterance.lang = languageSelect.value;
+    utterance.rate = Number(voiceRate.value);
+    utterance.pitch = Number(voicePitch.value);
+    utterance.volume = 1;
+
+    const selectedIndex =
+        Number(voiceSelect.value);
+
+    if(
+        Number.isInteger(selectedIndex) &&
+        voices[selectedIndex]
+    ){
+        utterance.voice = voices[selectedIndex];
+    }else{
+
+        const preferred =
+            voices.find(v =>
+                v.lang
+                .toLowerCase()
+                .startsWith(
+                    languageSelect.value.substring(0,2)
+                )
+            );
+
+        if(preferred){
+            utterance.voice = preferred;
+        }
+    }
+
+    speechSynthesis.speak(utterance);
+}
+
+
+/* =========================================================
+   VOICE BUTTON
+========================================================= */
+
+voiceBtn.addEventListener("click",()=>{
+
+    voiceEnabled = !voiceEnabled;
+
+    if(!voiceEnabled){
+
+        speechSynthesis.cancel();
+
+        voiceBtn.innerHTML = "🔇 VOICE OFF";
+        voiceBtn.classList.remove("voice-active");
+
+        document.getElementById("voiceStatus")
+            .textContent = "OFF";
+
+    }else{
+
+        voiceBtn.innerHTML = "🔊 VOICE ON";
+        voiceBtn.classList.add("voice-active");
+
+        document.getElementById("voiceStatus")
+            .textContent = "ON";
+
+        speak(getGreeting());
+    }
+
+});
+
+
+/* =========================================================
+   GREETING
+========================================================= */
+
+function getGreeting(){
+
+    if(languageSelect.value === "mr-IN"){
+        return "नमस्कार Boss! मी Swity आहे. आज मी तुमची कशी मदत करू शकते?";
+    }
+
+    if(languageSelect.value === "hi-IN"){
+        return "Hello Boss! Main Swity hoon. Aaj main aapki kya sahayata kar sakti hoon?";
+    }
+
+    return "Hello Boss! I'm Swity AI by GurukrupaTech. How may I assist you today?";
+}
+
+
+/* =========================================================
+   ADD MESSAGE
+========================================================= */
+
+function addMessage(text,type){
+
+    const div =
+        document.createElement("div");
+
+    div.className =
+        "message " +
+        (type === "user"
+            ? "user-message"
+            : "ai-message");
+
+    div.textContent = text;
+
+    messages.appendChild(div);
+
+    messages.scrollTop =
+        messages.scrollHeight;
+
+    return div;
+}
+
+
+/* =========================================================
+   LOCAL SWITY RESPONSE
+========================================================= */
+
+function generateResponse(question){
+
+    const q = question.toLowerCase();
+
+    if(
+        q.includes("hello") ||
+        q.includes("hi") ||
+        q.includes("नमस्कार") ||
+        q.includes("हॅलो")
+    ){
+        return getGreeting();
+    }
+
+    if(
+        q.includes("trading") ||
+        q.includes("trade") ||
+        q.includes("ट्रेडिंग")
+    ){
+
+        if(languageSelect.value === "mr-IN"){
+            return "Trading मध्ये आधी Risk Management, Support-Resistance, Market Structure आणि योग्य Position Size समजून घे. Profit पेक्षा capital protection ला priority दे.";
+        }
+
+        if(languageSelect.value === "hi-IN"){
+            return "Trading में सबसे पहले Risk Management, Support-Resistance, Market Structure और सही Position Size सीखिए. Profit से पहले capital protection को priority दीजिए.";
+        }
+
+        return "For trading, start with risk management, support and resistance, market structure and proper position sizing. Protecting capital should come before chasing profit.";
+    }
+
+    if(
+        q.includes("code") ||
+        q.includes("coding") ||
+        q.includes("html") ||
+        q.includes("javascript")
+    ){
+
+        if(languageSelect.value === "mr-IN"){
+            return "नक्की Boss! मी HTML, CSS आणि JavaScript मध्ये website तयार करण्यास, errors शोधण्यास आणि features जोडण्यास मदत करू शकते.";
+        }
+
+        if(languageSelect.value === "hi-IN"){
+            return "Bilkul Boss! Main HTML, CSS aur JavaScript mein website banane, errors fix karne aur naye features add karne mein madad kar sakti hoon.";
+        }
+
+        return "Absolutely Boss! I can help you build websites with HTML, CSS and JavaScript, fix errors and add new features.";
+    }
+
+    if(
+        q.includes("who are you") ||
+        q.includes("तू कोण") ||
+        q.includes("tum kaun")
+    ){
+        return "I'm Swity AI by GurukrupaTech, created by Shiv Sonune.";
+    }
+
+    if(
+        q.includes("help") ||
+        q.includes("मदत") ||
+        q.includes("madad")
+    ){
+        return getGreeting();
+    }
+
+    if(languageSelect.value === "mr-IN"){
+        return "Boss, तुमचा प्रश्न समजला. मी त्यावर योग्य उत्तर देण्याचा प्रयत्न करते. अधिक specific प्रश्न विचारा.";
+    }
+
+    if(languageSelect.value === "hi-IN"){
+        return "Boss, aapka sawaal samajh gaya. Main uska best answer dene ki koshish karungi. Thoda specific question poochiye.";
+    }
+
+    return "Boss, I understand your question. I'll try to give you the best possible answer. Ask me something more specific.";
+}
+
+
+/* =========================================================
+   SEND
+========================================================= */
+
+async function sendMessage(){
+
+    const question =
+        input.value.trim();
+
+    if(!question){
+        return;
+    }
+
+    addMessage(question,"user");
+
+    input.value = "";
+
+    /* BACKEND IF PROVIDED */
+    const endpoint =
+        apiEndpoint.value.trim();
+
+    if(endpoint){
+
+        try{
+
+            const response =
+                await fetch(endpoint,{
+                    method:"POST",
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+                    body:JSON.stringify({
+                        message:question,
+                        language:languageSelect.value
+                    })
+                });
+
+            if(!response.ok){
+                throw new Error("Backend error");
+            }
+
+            const data =
+                await response.json();
+
+            const answer =
+                data.reply ||
+                data.response ||
+                data.message ||
+                "No response received.";
+
+            addMessage(answer,"ai");
+            speak(answer);
+
+            return;
+
+        }catch(error){
+
+            addMessage(
+                "Backend connect होऊ शकले नाही. Local Swity mode वापरत आहे.",
+                "ai"
+            );
+
+        }
+
+    }
+
+    /* LOCAL MODE */
+
+    setTimeout(()=>{
+
+        const answer =
+            generateResponse(question);
+
+        addMessage(answer,"ai");
+
+        speak(answer);
+
+    },350);
+}
+
+sendBtn.addEventListener("click",sendMessage);
+
+
+/* =========================================================
+   ENTER TO SEND
+========================================================= */
+
+input.addEventListener("keydown",(e)=>{
+
+    if(e.key === "Enter" && !e.shiftKey){
+
+        e.preventDefault();
+
+        sendMessage();
+
+    }
+
+});
+
+
+/* =========================================================
+   MICROPHONE
+========================================================= */
+
+const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+if(SpeechRecognition){
+
+    recognition =
+        new SpeechRecognition();
+
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = ()=>{
+
+        micBtn.innerHTML = "🔴 LISTENING";
+
+    };
+
+    recognition.onresult = (event)=>{
+
+        const text =
+            event.results[0][0].transcript;
+
+        input.value = text;
+
+        micBtn.innerHTML = "🎙 MIC";
+
+        sendMessage();
+
+    };
+
+    recognition.onerror = ()=>{
+
+        micBtn.innerHTML = "🎙 MIC";
+
+    };
+
+    recognition.onend = ()=>{
+
+        micBtn.innerHTML = "🎙 MIC";
+
+    };
+
+    micBtn.addEventListener("click",()=>{
+
+        try{
+
+            recognition.lang =
+                languageSelect.value;
+
+            recognition.start();
+
+        }catch(e){}
+
+    });
+
+}else{
+
+    micBtn.addEventListener("click",()=>{
+
+        alert(
+            "तुमच्या browser मध्ये Speech Recognition support नाही."
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   RANGE VALUES
+========================================================= */
+
+voiceRate.addEventListener("input",()=>{
+
+    rateValue.textContent =
+        Number(voiceRate.value).toFixed(2);
+
+});
+
+voicePitch.addEventListener("input",()=>{
+
+    pitchValue.textContent =
+        Number(voicePitch.value).toFixed(2);
+
+});
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+document.getElementById("menuBtn")
+.addEventListener("click",()=>{
+
+    if(window.innerWidth <= 700){
+
+        openSettings();
+
+    }else{
+
+        alert(
+            "SWITY AI • Main Control Center"
+        );
+
+    }
+
+});
+
+
+/* =========================================================
+   AUTO GREETING VOICE
+   User must first interact with page on many browsers.
+========================================================= */
+
+document.addEventListener("click",()=>{
+
+    if(!window.__swityReady){
+
+        window.__swityReady = true;
+
+        /* Don't autoplay immediately */
+    }
+
+},{once:true});
+
+
+/* =========================================================
+   SAVE SETTINGS LOCALLY
+========================================================= */
+
+function saveSettings(){
+
+    localStorage.setItem(
+        "swityLanguage",
+        languageSelect.value
+    );
+
+    localStorage.setItem(
+        "swityRate",
+        voiceRate.value
+    );
+
+    localStorage.setItem(
+        "swityPitch",
+        voicePitch.value
+    );
+
+    localStorage.setItem(
+        "swityEndpoint",
+        apiEndpoint.value
+    );
+}
+
+function loadSettings(){
+
+    const lang =
+        localStorage.getItem("swityLanguage");
+
+    const rate =
+        localStorage.getItem("swityRate");
+
+    const pitch =
+        localStorage.getItem("swityPitch");
+
+    const endpoint =
+        localStorage.getItem("swityEndpoint");
+
+    if(lang){
+        languageSelect.value = lang;
+    }
+
+    if(rate){
+        voiceRate.value = rate;
+        rateValue.textContent =
+            Number(rate).toFixed(2);
+    }
+
+    if(pitch){
+        voicePitch.value = pitch;
+        pitchValue.textContent =
+            Number(pitch).toFixed(2);
+    }
+
+    if(endpoint){
+        apiEndpoint.value = endpoint;
+    }
+
+    loadVoices();
+}
+
+languageSelect.addEventListener("change",saveSettings);
+voiceRate.addEventListener("change",saveSettings);
+voicePitch.addEventListener("change",saveSettings);
+apiEndpoint.addEventListener("change",saveSettings);
+
+loadSettings();
+
+
+/* =========================================================
+   INITIAL STATUS
+========================================================= */
+
+voiceBtn.classList.add("voice-active");
+
+</script>
+
+</body>
+</html>
